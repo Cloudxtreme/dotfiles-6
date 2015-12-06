@@ -206,3 +206,10 @@ Requirements:
   - vim
   - screenfetch
   - mpd
+
+![](https://raw.githubusercontent.com/sebpot/dotfiles/master/previews/preview-02.png)
+
+  - firefox
+  - weechat
+  - zathura
+
