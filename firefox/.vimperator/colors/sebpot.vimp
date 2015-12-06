@@ -1,0 +1,37 @@
+"
+" Vimperator color theme
+"
+" Author: Sebastian Potasiak <sebpot@protonmail.com>
+" Date:   2015-12-06
+" File:   ~/.vimperator/colors/sebpot.vimp
+"
+
+hi! Bell color: #fb4934; background: #1d2021;
+hi! Boolean color: #ebdbb2;
+hi! CmdLine color: #a89984; background: #1d2021;
+hi! CmdLine>* font-family: "tewi"; font-size: 8pt; height: 18px;
+hi! CompDesc width: auto; color: #ebdbb2;
+hi! CompItem color: #fabd2f;
+hi! CompItem[selected] background: #504945;
+hi! CompTitle color: #fbf1c7; background: #1d2021;
+hi! CompTitle>* color: #fbf1c7; padding: 2px 4px; font-family: "tewi";
+hi! Disabled color: #ebdbb2;
+hi! Enabled color: #ebdbb2;
+hi! ErrorMsg color: #fb4934;
+hi! Filter color: #1d2021; background: #fabd2f;
+hi! Hint color: #fbf1c7; background: #1d2021; border: 1px solid #fbf1c7; width: 16px; height: 14px; font-family: "tewi"; font-size: 8pt; border-radius: 8px; text-align: center; padding-top: 2px; margin-top: -8px; margin-left: -8px;
+hi! HintActive color: #1d2021; background: #fabd2f;
+hi! HintElem color: #1d2021; background: #a89984;
+hi! Indicator color: #ebdbb2;
+hi! InfoMsg color: #83a598; background: #1d2021;
+hi! Keyword color: #b8bb26;
+hi! LineNr color: #7cafc2; background: #1d2021;
+hi! ModeMsg color: #b8bb26; background: #1d2021; font-family: "tewi"; padding: 0 4px;
+hi! MoreMsg color: #83a598; background: #1d2021;
+hi! Normal color: #ebdbb2; background: #1d2021; font-family: "tewi"; font-size: 8pt;
+hi! PromptText color: #7cafc2; background: #1d2021; margin: 8px; padding: 0; height: 18px; margin-bottom: 0;
+hi! Question color: #a89984; background: #1d2021;
+hi! StatusLine color: #ebdbb2; background: #1d2021; font-family: "tewi"; font-size: 8pt; padding-right: 4px;
+hi! Title color: #a89984; background: #1d2021; margin: 8px;
+
+" vim:ft=vim

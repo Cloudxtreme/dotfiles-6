@@ -1,0 +1,21 @@
+"
+" Vimperator
+"
+" Author: Sebastian Potasiak <sebpot@protonmail.com>
+" Date:   2015-12-06
+" File:   ~/.vimperatorrc
+"
+
+set titlestring=''
+
+colorscheme sebpot
+
+noremap <C-q> :xall<CR>
+noremap <C-t> :tabopen<CR>gh<CR>
+
+noremap j 4j
+noremap k 4k
+
+inoremap <C-a> <C-Home><C-S-End>
+
+" vim:ft=vim

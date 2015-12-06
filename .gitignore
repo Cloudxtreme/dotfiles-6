@@ -1,0 +1,17 @@
+firefox/.vimperator/info/*
+
+mpd/.config/mpd/log
+ncmpcpp/.ncmpcpp/error.log
+
+vim/.vim/backup/*
+vim/.vim/bundle/*
+!vim/.vim/bundle/Vundle.vim
+
+weechat/.weechat/*
+!weechat/.weechat/*.conf
+!weechat/.weechat/script
+!weechat/.weechat/python
+!weechat/.weechat/ruby
+!weechat/.weechat/perl
+!weechat/.weechat/lua
+!weechat/.weechat/guile

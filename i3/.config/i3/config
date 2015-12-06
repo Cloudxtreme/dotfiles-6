@@ -1,0 +1,236 @@
+#
+# i3wm
+#
+# Author: Sebastian Potasiak <sebpot@protonmail.com>
+# Date:   2015-12-02
+# File:   ~/.config/i3/config
+#
+
+# Variables {{{
+
+# Modifier key
+set $mod Mod4
+
+# Directions
+set $left  h
+set $down  j
+set $up    k
+set $right l
+
+# Workspaces
+set $ws1 " 1 "
+set $ws2 " 2 "
+set $ws3 " 3 "
+set $ws4 " 4 "
+set $ws5 " 5 "
+set $ws6 " 6 "
+set $ws7 " 7 "
+set $ws8 " 8 "
+
+# Gaps
+set $gaps_inner 24
+set $gaps_outer  0
+
+# }}}
+# Appearance {{{
+
+# Font
+font pango:siji, tewi 8
+
+# Gaps
+gaps inner $gaps_inner
+gaps outer $gaps_outer
+
+# Window border width
+new_window pixel 4
+
+# Colors
+#                       BORDER      BACKGROUND  TEXT       INDICATOR
+client.focused          "#d5c4a1"   "#d5c4a1"   "#edbdd2"  "#d5c4a1"
+client.unfocused        "#282828"   "#282828"   "#ebdbb2"  "#282828"
+client.focused_inactive "#665c54"   "#665c54"   "#ebdbb2"  "#665c54"
+client.urgent           "#cc241d"   "#cc241d"   "#ebdbb2"  "#cc241d"
+
+# }}}
+# Workspaces {{{
+
+# Workspace auto back and forth
+workspace_auto_back_and_forth yes
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+
+# Switch to previous workspace
+bindsym $mod+Tab workspace back_and_forth
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+
+# }}}
+# Windows {{{
+
+# Enable smart borders
+#smart_borders on
+
+# Enable smart gaps
+#smart_gaps on
+
+# Focus window on mouse over
+focus_follows_mouse no
+
+# Move floating window key
+floating_modifier $mod
+
+# Change focus
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
+bindsym $mod+$right focus right
+
+# Move focused window
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$down  move down
+bindsym $mod+Shift+$up    move up
+bindsym $mod+Shift+$right move right
+
+# Split in horizontal orientation
+bindsym $mod+g split h
+
+# Split in vertical orientation
+bindsym $mod+v split v
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Make window sticky
+bindsym $mod+Shift+s sticky toggle
+
+# Focus the parent / child container
+bindsym $mod+a       focus parent
+bindsym $mod+Shift+a focus child
+
+# Resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+mode "resize" {
+        bindsym $left  resize shrink width  1 px or 1 ppt
+        bindsym $up    resize grow   height 1 px or 1 ppt
+        bindsym $down  resize shrink height 1 px or 1 ppt
+        bindsym $right resize grow   width  1 px or 1 ppt
+
+        # Back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Gaps / no gaps mode
+bindsym $mod+Shift+g gaps inner all set $gaps_inner, gaps outer all set $gaps_outer
+bindsym $mod+Shift+b gaps inner all set 0, gaps outer all set 0
+
+# Kill window
+bindsym $mod+Shift+q kill
+
+# }}}
+# i3 {{{
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# }}}
+# Rules {{{
+
+# Roles
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+
+# Types
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
+# Classes
+for_window [class="(?i)pavucontrol"] floating enable, move position mouse
+for_window [class="(?i)transmission-gtk"] floating enable
+
+# }}}
+# Applications {{{
+
+# Terminal
+bindsym $mod+Return exec --no-startup-id urxvt
+
+# Run application
+bindsym $mod+d exec --no-startup-id rofi -show run
+
+# Lock screen
+bindsym $mod+Escape exec --no-startup-id $HOME/.local/bin/lock.sh
+
+# Power menu
+bindsym $mod+Shift+Escape exec --no-startup-id $HOME/.local/bin/power.sh
+
+# Other
+bindsym $mod+Shift+w exec --no-startup-id firefox
+bindsym $mod+Shift+f exec --no-startup-id thunar
+
+# Volume control
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5%
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute 1 toggle
+
+# Brightness control
+bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -time 50 -inc 5
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -time 50 -dec 5
+
+# Toggle touchpad
+bindsym $mod+t exec --no-startup-id $HOME/.local/bin/touchpad.sh
+
+# Screenshots
+bindsym --release Print exec --no-startup-id scrot $HOME/pictures/scrot/$(date +%Y-%m-%d_%H-%M-%S).png
+bindsym --release Ctrl+Print exec --no-startup-id scrot -u $HOME/pictures/scrot/$(date +%Y-%m-%d_%H-%M-%S).png
+bindsym --release Shift+Print exec --no-startup-id scrot -s $HOME/pictures/scrot/$(date +%Y-%m-%d_%H-%M-%S).png
+
+# }}}
+# Startup {{{
+exec --no-startup-id devmon -g &
+exec --no-startup-id pulseaudio --start
+exec --no-startup-id numlockx on
+exec --no-startup-id $HOME/.local/bin/touchpad.sh 0
+exec --no-startup-id unclutter -b
+exec --no-startup-id dunst &
+exec --no-startup-id redshift &
+exec --no-startup-id nm-applet &
+exec --no-startup-id $HOME/.local/bin/bar.sh &
+exec --no-startup-id feh --bg-fill $HOME/pictures/wallpaper.png
+exec --no-startup-id xautolock -time 10 -locker $HOME/.local/bin/lock.sh &
+exec --no-startup-id rescuetime &
+exec --no-startup-id $HOME/.local/bin/start-server.sh &
+# }}}
+
+# vim:fdm=marker:foldlevel=0:ft=i3

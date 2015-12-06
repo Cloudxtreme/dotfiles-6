@@ -1,0 +1,13 @@
+!
+! Xserver resources
+!
+! Author: Sebastian Potasiak <sebpot@protonmail.com>
+! Date:   2015-12-06
+! File:   ~/.Xresources
+!
+
+#include "/home/sebpot/.config/x11/xft.xresources"
+#include "/home/sebpot/.config/x11/urxvt.xresources"
+#include "/home/sebpot/.config/x11/rofi.xresources"
+
+! vim:ft=xdefaults

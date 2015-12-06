@@ -1,0 +1,39 @@
+!
+! Rofi
+!
+! Author: Sebastian Potasiak <sebpot@protonmail.com>
+! Date:   2015-12-06
+! File:   ~/.config/x11/rofi.xresources
+!
+
+rofi.font: tewi 8
+
+rofi.padding: 20
+
+rofi.lines: 5
+rofi.eh: 1
+
+rofi.separator-style: solid
+
+rofi.hide-scrollbar: 1
+
+rofi.bg: #282828
+rofi.bg-active: #282828
+rofi.bg-urgent: #282828
+
+rofi.fg: #ebdbb2
+rofi.fg-active: #ebdbb2
+rofi.fg-urgent: #ebdbb2
+
+rofi.hlbg: #282828
+rofi.hlbg-active: #282828
+rofi.hlbg-urgent: #282828
+
+rofi.hlfg: #d79921
+rofi.hlfg-active: #d79921
+rofi.hlfg-urgent: #cc241d
+
+rofi.bc: #282828
+rofi.bw: 0
+
+! vim:ft=xdefaults
