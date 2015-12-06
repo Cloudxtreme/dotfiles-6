@@ -10,7 +10,7 @@ Directory   | Description
 **gtk**     | graphical UI config
 **i3**      | i3wm (gaps-next) and lemonbar config + additional shell scripts
 **mpd**     | music player daemon config
-*ncmpcpp**  | ncurses mpc++ config
+**ncmpcpp** | ncurses mpc++ config
 **vim**     | vim config with Vundle
 **weechat** | irc client config
 **x11**     | xorg config with urxvt and rofi
@@ -28,7 +28,7 @@ All of the graphical interfaces are themed with [gruvbox](https://github.com/mor
 
 ## Managing
 
-For managing dotfiles I use [GNU Stow](http://www.gnu.org/software/stow/), a :*"symlink manager which takes distinct packages of software and/or data located in separate directories on the filesystem, and makes them appear to be installed in the same place"*. It makes sharing these files among many users, systems and machines ridiculously easy when used with Git.
+For managing dotfiles I use [GNU Stow](http://www.gnu.org/software/stow/), a *"symlink manager which takes distinct packages of software and/or data located in separate directories on the filesystem, and makes them appear to be installed in the same place"*. It makes sharing these files among many users, systems and machines ridiculously easy when used with Git.
 
 To install GNU Stow you can use your system's default package manager, for example:
 
@@ -64,6 +64,7 @@ this will create symlink files in `~/.config/i3` directory and few other places.
 Requirements:
 
   - **dunst**
+  - **artwiz-fonts**
 
 ### firefox
 
@@ -71,6 +72,8 @@ Requirements:
 
   - **firefox**
   - **vimperator** firefox addon
+  - **artwiz-fonts**
+  - **Roboto Mono for Powerline** font
 
 ### git
 
@@ -84,12 +87,14 @@ Requirements:
 
   - **gtk-3.0**
   - **gtk-2.0**
+  - **Cantarell* font
 
 ### i3
 
 Requirements:
 
   - **[i3-gaps-next](https://github.com/Airblader/i3)**
+  - **artwiz-fonts** (for interface font)
   - **udevil** (for mounting devices automatically)
   - **feh** (for wallpaper)
   - **firefox** (web browser)
@@ -162,6 +167,7 @@ Requirements:
   - **xorg**
   - **rofi**
   - **rxvt-unicode*
+  - **Roboto Mono for Powerline** font
 
 ### xdg
 
@@ -175,6 +181,7 @@ Requirements:
 
   - **zathura**
   - **zathura-pdf-poppler**
+  - **artwiz-fonts**
 
 ### zsh
 
@@ -191,3 +198,11 @@ Requirements:
   - **xorg**
   - **zsh-syntax-highlighting**
 
+
+## Previews
+
+![](https://raw.githubusercontent.com/sebpot/dotfiles/master/previews/preview-01.png)
+
+  - vim
+  - screenfetch
+  - mpd
