@@ -1,0 +1,126 @@
+#
+# Git
+#
+# Author: Sebastian Potasiak <sebpot@protonmail.com>
+# Date:   2015-12-06
+# File:   ~/.gitconfig
+#
+
+[core]
+  autocrlf = input
+  editor = vim
+  excludesfile = ~/.gitignore-global
+  quotepath = false
+
+[user]
+  name = Sebastian Potasiak
+  email = sebastian.potasiak@gmail.com
+
+[push]
+  default = current
+
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+  grep = auto
+[color "branch"]
+  current = green bold
+  local = green
+  remote = blue
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = red
+
+[log]
+  date = relative
+
+[merge]
+  tool = vimdiff
+
+[mergetool]
+  prompt = false
+  tool = vimdiff
+
+[diff]
+    tool = vimdiff
+
+[alias]
+  # Adding
+  a = add
+  ae = add --edit
+  ai = add --interactive
+  ap = add --patch
+  au = add --update
+
+  # Branching
+  b = branch
+  ba = branch -a
+  bm = branch --merged
+  bn = branch --no-merged
+  bo = branch -r
+  bls = branch -v
+  brm = branch -d
+  bmv = branch -m
+
+  # Checkout
+  co = checkout
+  co- = checkout -
+  cb = checkout -b
+  ct = checkout --track
+
+  # Commit
+  c = commit
+  ci = commit -a
+  ca = commit -a --amend
+  cm = commit -m
+
+  # Diff
+  d = diff
+  dc = diff --cached
+  du = diff @{upstream}
+
+  # Grep
+  g = "!git --no-pager grep --color --ignore-case -n"
+
+  # Log
+  l = log
+  ls = log --stat
+  lp = log -p
+  lg = log --graph
+
+  # Push
+  ps = push
+  po = push origin
+  pof = push -f origin
+  pou = push -u origin
+
+  # Fetch
+  f = fetch
+  fp = fetch --prune
+
+  # Pull
+  pu = pull
+  pr = pull --rebase
+
+  # Rebase
+  r = rebase
+  ra = rebase --abort
+  rc = rebase --continue
+  ri = rebase --interactive
+  ru = rebase --onto @{upstream}
+
+  # Reset
+  rst = reset
+
+  # Status
+  s = status --short --branch --untracked-files=no
+  sa = status --short --branch --untracked-files=normal
+
+# vim:ft=gitconfig
