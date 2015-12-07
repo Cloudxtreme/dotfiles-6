@@ -98,18 +98,18 @@ while true; do
 done > "$panel_fifo" &
 
 # Window title
-function window_title() {
-  title="$(xtitle)"
-  if [ ${#title} -gt 120 ]; then
-    title="${title:0:120}..."
-  fi
-  title="T%{F$fg2}$title%{F-}"
-  echo $title
-}
-while true; do
-  echo $(window_title)
-  sleep 0.2
-done > "$panel_fifo" &
+#function window_title() {
+#  title="$(xtitle)"
+#  if [ ${#title} -gt 120 ]; then
+#    title="${title:0:120}..."
+#  fi
+#  title="T%{F$fg2}$title%{F-}"
+#  echo $title
+#}
+#while true; do
+#  echo $(window_title)
+#  sleep 0.2
+#done > "$panel_fifo" &
 
 # Date and time
 while true; do

@@ -51,7 +51,15 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-surround'
 
 " Completion
-Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neocomplete'
+
+" Snippets
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'honza/vim-snippets'
+
+" Syntax checking
+Plugin 'scrooloose/syntastic'
 
 " LaTeX
 Plugin 'lervag/vimtex'
@@ -119,6 +127,15 @@ set history=1000
 " Ignore character case when searching
 set ignorecase
 
+" Reload files on change
+set autoread
+
+" Write files when switching buffers
+set autowriteall
+
+" Set update time
+set updatetime=1000
+
 " }}}
 " UI {{{
 
@@ -155,6 +172,12 @@ set fillchars+=vert:\
 " Always show status line
 set laststatus=2
 
+" Open horizontal splits on the bottom
+set splitbelow
+
+" Open vertical splits on the right
+set splitright
+
 " }}}
 " Color {{{
 
@@ -185,16 +208,41 @@ let g:airline_right_sep = ''
 let g:NERDTreeWinPos = 'left'
 let g:NERDTreeWinSize = 32
 let NERDTreeIgnore = [
-    \ '\.aux$', '\.bak$', '\.class$', '\.jpg$', '\.nav$', '\.o$', '\.obj$',
-    \ '\.out$', '\.pdf$', '\.png$', '\.pyc$', '\.snm$', '\.sty$',
-    \ '\.sublime-project$', '\.sublime-workspace$', '\.tmp$', '\.toc$'
-    \ ]
+      \ '\.aux$', '\.bak$', '\.class$', '\.jpg$', '\.nav$', '\.o$', '\.obj$',
+      \ '\.out$', '\.pdf$', '\.png$', '\.pyc$', '\.snm$', '\.sty$',
+      \ '\.sublime-project$', '\.sublime-workspace$', '\.tmp$', '\.toc$'
+      \ ]
 
 " Neocomplete
 let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplete#force_overwrite_completefunc = 1
+let g:neocomplete#data_directory = '~/.vim/cache/neocomplete'
+
+let g:neocomplete#snippets_directory = '~/.vim/bundle/vim-snippets/snippets'
+let g:neocomplete#enable_snipmate_compatibility = 1
+
+imap <C-i> <Plug>(neosnippet_expand_or_jump)
+smap <C-i> <Plug>(neosnippet_expand_or_jump)
+xmap <C-i> <Plug>(neosnippet_expand_target)
+
+imap <expr><Tab> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: pumvisible() ? "\<C-n>" : "\<Tab>"
+smap <expr><Tab> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: "\<Tab>"
+
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.python =  '[^. *\t]\.\w*\|\h\w*::'
+let g:neocomplete#force_omni_input_patterns.ruby =  '[^. *\t]\.\w*\|\h\w*::'
+
+" Syntastic
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_style_error_symbol = '✠'
+let g:syntastic_warning_symbol = '∆'
+let g:syntastic_style_warning_symbol = '≈'
 
 " }}}
 " Functions {{{
@@ -206,11 +254,6 @@ function! NumberToggle()
   else
     set relativenumber
   endif
-endfunction
-
-" Neocomplete CR function
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
 endfunction
 
 " }}}
@@ -229,6 +272,12 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
+
+" Resize buffers
+nnoremap <Left> :vertical resize -1
+nnoremap <Down> :horizontal resize -1
+nnoremap <Up> :horizontal resize +1
+nnoremap <Right> :vertical resize +1
 
 " Toggle folding
 nnoremap <leader><space> za
@@ -252,6 +301,9 @@ nnoremap k :m-2<CR>==
 vnoremap j :m '>+1<CR>gv=gv
 vnoremap k :m '<-2<CR>gv=gv
 
+" Format code
+nnoremap <leader>g gg=G
+
 " Disable search highlighting
 nnoremap <leader>h :nohlsearch<CR>
 
@@ -263,14 +315,6 @@ nnoremap <leader>s :mksession
 
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
-
-" Neocomplete mappings
-inoremap <expr><C-g> neocomplete#undo_completion()
-inoremap <expr><C-l> neocomplete#complete_common_string()
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
 " }}}
 " File {{{
@@ -285,12 +329,18 @@ set backupdir=~/.vim/backup
 " }}}
 " Autocommands {{{
 
+" Auto write
+autocmd FocusLost * silent! :wa
+autocmd TabLeave * silent! :wa
+autocmd CursorHold * update
+autocmd CursorHold,CursorHoldI * update
+
 " CSS files
 autocmd FileType css
       \ setlocal omnifunc=csscomplete#CompleteCSS
 
 " HTML files
-autocmd FileType html
+autocmd FileType html,markdown
       \ setlocal omnifunc=htmlcomplete#CompleteTags
 
 " JavaScript files
@@ -299,7 +349,7 @@ autocmd FileType javascript
 
 " Python files
 autocmd FileType python
-      \ setlocal omnifunc=pythoncomplete#Complete |
+      \ set omnifunc=pythoncomplete#Complete |
       \ setlocal tabstop=4 |
       \ setlocal softtabstop=4 |
       \ setlocal shiftwidth=4 |

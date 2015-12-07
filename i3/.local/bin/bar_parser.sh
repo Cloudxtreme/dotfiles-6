@@ -25,15 +25,12 @@ while read -r line; do
     V* )
       volume="${line#?}"
       ;;
-    T* )
-      title="${line#?}"
-      ;;
     M* )
       music="${line#?}"
       ;;
   esac
 
-  printf "%s\n" "%{l} $wm_infos   $music%{c}  $title  %{r} $volume    $network    $battery    $clock  "
+  printf "%s\n" "%{l} $music%{c}  $wm_infos  %{r} $volume    $network    $battery    $clock  "
 done
 
 # vim:ft=zsh
