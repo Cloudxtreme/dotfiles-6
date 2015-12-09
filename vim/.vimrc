@@ -274,10 +274,10 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 
 " Resize buffers
-nnoremap <Left> :vertical resize -1
-nnoremap <Down> :horizontal resize -1
-nnoremap <Up> :horizontal resize +1
-nnoremap <Right> :vertical resize +1
+nnoremap <Left> :vertical resize -1<CR>
+nnoremap <Down> :horizontal resize -1<CR>
+nnoremap <Up> :horizontal resize +1<CR>
+nnoremap <Right> :vertical resize +1<CR>
 
 " Toggle folding
 nnoremap <leader><space> za
