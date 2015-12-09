@@ -51,12 +51,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-surround'
 
 " Completion
-Plugin 'Shougo/neocomplete'
-
-" Snippets
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
-Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
 
 " Syntax checking
 Plugin 'scrooloose/syntastic'
@@ -213,36 +208,24 @@ let NERDTreeIgnore = [
       \ '\.sublime-project$', '\.sublime-workspace$', '\.tmp$', '\.toc$'
       \ ]
 
-" Neocomplete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#force_overwrite_completefunc = 1
-let g:neocomplete#data_directory = '~/.vim/cache/neocomplete'
-
-let g:neocomplete#snippets_directory = '~/.vim/bundle/vim-snippets/snippets'
-let g:neocomplete#enable_snipmate_compatibility = 1
-
-imap <C-i> <Plug>(neosnippet_expand_or_jump)
-smap <C-i> <Plug>(neosnippet_expand_or_jump)
-xmap <C-i> <Plug>(neosnippet_expand_target)
-
-imap <expr><Tab> neosnippet#expandable_or_jumpable() ?
-  \ "\<Plug>(neosnippet_expand_or_jump)"
-  \: pumvisible() ? "\<C-n>" : "\<Tab>"
-smap <expr><Tab> neosnippet#expandable_or_jumpable() ?
-  \ "\<Plug>(neosnippet_expand_or_jump)"
-  \: "\<Tab>"
-
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.python =  '[^. *\t]\.\w*\|\h\w*::'
-let g:neocomplete#force_omni_input_patterns.ruby =  '[^. *\t]\.\w*\|\h\w*::'
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 " Syntastic
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_warning_symbol = '∆'
 let g:syntastic_style_warning_symbol = '≈'
+
+" Virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
 
 " }}}
 " Functions {{{
@@ -302,7 +285,7 @@ vnoremap j :m '>+1<CR>gv=gv
 vnoremap k :m '<-2<CR>gv=gv
 
 " Format code
-nnoremap <leader>g gg=G
+nnoremap <leader>f gg=G
 
 " Disable search highlighting
 nnoremap <leader>h :nohlsearch<CR>
@@ -312,6 +295,9 @@ nnoremap <leader>n :call NumberToggle()<CR>
 
 " Save session
 nnoremap <leader>s :mksession
+
+" YouCompleteMe go to definition
+map <leader>g
 
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
