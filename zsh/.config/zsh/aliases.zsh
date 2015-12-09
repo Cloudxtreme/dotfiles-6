@@ -49,4 +49,11 @@ alias venv.proj.cd="cdproject"
 
 alias venv.wipe="wipeenv"
 
+# Tmux
+alias tmux.new="tmux new -s"
+alias tmux.attach="tmux attach -t"
+alias tmux.ls="tmux ls"
+alias tmux.kill="tmux kill-session -t"
+alias tmux.killall="tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill"
+
 # vim:ft=zsh
