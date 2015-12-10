@@ -47,6 +47,9 @@ Plugin 'tpope/vim-fugitive'
 " Git gutter
 Plugin 'airblade/vim-gitgutter'
 
+" Virtualenv
+Plugin 'jmcantrell/vim-virtualenv'
+
 " Surround
 Plugin 'tpope/vim-surround'
 
@@ -198,6 +201,19 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'c'  : 'C',
+      \ 'v'  : 'V',
+      \ 'V'  : 'VL',
+      \ '' : 'VB',
+      \ 's'  : 'S',
+      \ 'S'  : 'SL',
+      \ '' : 'SB',
+      \ }
 
 " NERDTree
 let g:NERDTreeWinPos = 'left'
