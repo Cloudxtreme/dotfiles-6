@@ -7,8 +7,10 @@
 !
 
 ! Font
-URxvt*font: xft:Roboto Mono Medium for Powerline:size=10:antialias=true:hinting=true,xft:Source Code Pro for Powerline:size=10:style=Medium,Regular:antialias=true:hinting=true
-URxvt*boldFont: xft:Roboto Mono for Powerline:size=10:style=Bold:antialias=true:hinting=true,xft:Source Code Pro for Powerline:size=10:style=Bold:antialias=true:hinting=true
+!URxvt*font: xft:Roboto Mono Medium for Powerline:size=10:antialias=true:hinting=true,xft:Source Code Pro for Powerline:size=10:style=Medium,Regular:antialias=true:hinting=true
+!URxvt*boldFont: xft:Roboto Mono for Powerline:size=10:style=Bold:antialias=true:hinting=true,xft:Source Code Pro for Powerline:size=10:style=Bold:antialias=true:hinting=true
+URxvt*font: xft:Terminus:size=8:antialias=false:hinting=true,xft:siji:size=8:antialias=false:hinting=true
+URxvt*boldFont: xft:Terminus:size=8:style=Bold:antialias=false:hinting=true,xft:siji:size=8:antialias=false:hinting=true
 
 ! UI
 URxvt.internalBorder: 24
