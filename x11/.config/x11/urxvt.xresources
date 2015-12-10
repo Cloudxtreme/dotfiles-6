@@ -7,10 +7,9 @@
 !
 
 ! Font
-!URxvt*font: xft:Roboto Mono Medium for Powerline:size=10:antialias=true:hinting=true,xft:Source Code Pro for Powerline:size=10:style=Medium,Regular:antialias=true:hinting=true
-!URxvt*boldFont: xft:Roboto Mono for Powerline:size=10:style=Bold:antialias=true:hinting=true,xft:Source Code Pro for Powerline:size=10:style=Bold:antialias=true:hinting=true
 URxvt*font: xft:Terminus:size=8:antialias=false:hinting=true,xft:siji:size=8:antialias=false:hinting=true
 URxvt*boldFont: xft:Terminus:size=8:style=Bold:antialias=false:hinting=true,xft:siji:size=8:antialias=false:hinting=true
+URxvt*lineSpace: 2
 
 ! UI
 URxvt.internalBorder: 24
@@ -29,6 +28,7 @@ URxvt.iso14755_52: false
 URxvt.perl-ext-common: default,matcher,clipboard,vtwheel,resize-font
 URxvt.matcher.button: 1
 URxvt.matcher.rend.0: Uline Bold fg5
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 
 ! colors
