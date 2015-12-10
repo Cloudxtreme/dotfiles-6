@@ -7,8 +7,8 @@
 !
 
 ! Font
-URxvt*font: xft:Terminus:size=8:antialias=false:hinting=true,xft:siji:size=8:antialias=false:hinting=true
-URxvt*boldFont: xft:Terminus:size=8:style=Bold:antialias=false:hinting=true,xft:siji:size=8:antialias=false:hinting=true
+URxvt*font: xft:Terminess Powerline:size=8:antialias=false:hinting=true,-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+URxvt*boldFont: xft:Terminess Powerline:size=8:style=Bold:antialias=false:hinting=true,-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
 URxvt*lineSpace: 2
 
 ! UI

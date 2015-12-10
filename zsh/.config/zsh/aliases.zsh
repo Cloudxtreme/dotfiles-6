@@ -61,11 +61,11 @@ alias venv.wipe="wipeenv"
 # }}}
 # Tmux {{{
 
-alias tmux.new="tmux new -s"
-alias tmux.attach="tmux attach -t"
-alias tmux.ls="tmux ls"
-alias tmux.kill="tmux kill-session -t"
-alias tmux.killall="tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill"
+alias tmux.n="tmux new -s"
+alias tmux.a="tmux attach -t"
+alias tmux.l="tmux ls"
+alias tmux.k="tmux kill-session -t"
+alias tmux.ka="tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill"
 
 # }}}
 # Mixed {{{
