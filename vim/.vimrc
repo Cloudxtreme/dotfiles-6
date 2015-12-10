@@ -296,9 +296,6 @@ nnoremap <leader>n :call NumberToggle()<CR>
 " Save session
 nnoremap <leader>s :mksession
 
-" YouCompleteMe go to definition
-map <leader>g
-
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
