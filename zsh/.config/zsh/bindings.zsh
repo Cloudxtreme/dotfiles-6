@@ -13,8 +13,13 @@ bindkey -v
 typeset -A key
 
 # Aliases for common keys
-key[Home]=^[[7~
-key[End]=^[[8~
+if [[ $TERM =~ 'rxvt' ]]; then
+  key[Home]=^[[7~
+  key[End]=^[[8~
+else
+  key[Home]=^[[1~
+  key[End]=^[[4~
+fi
 key[Insert]=^[[2~
 key[Delete]=^[[3~
 key[Up]=^[[A
