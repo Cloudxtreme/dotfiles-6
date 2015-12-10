@@ -35,9 +35,9 @@ export KEYTIMEOUT=1
 function zle-keymap-select {
   local vimode
   if [[ $KEYMAP = "vicmd" ]]; then
-    vimode="COMMAND"
+    vimode="CMD "
   else
-    vimode="INSERT"
+    vimode=""
   fi
   zle reset-prompt
 }
@@ -93,12 +93,8 @@ prompt_segment() {
 	[[ -n $1 ]] && echo -n "%{%f%}"
 }
 
-prompt_prefix() {
-	prompt_segment $prefix_color '→ '
-}
-
 prompt_mode() {
-	prompt_segment $mode_color "${vimode:-INSERT}"
+	prompt_segment $mode_color "${vimode}"
 }
 
 prompt_virtualenv() {
@@ -106,7 +102,7 @@ prompt_virtualenv() {
 }
 
 prompt_dir() {
-	prompt_segment $dir_color ' %~'
+	prompt_segment $dir_color '%~'
 }
 
 prompt_git() {
@@ -136,16 +132,15 @@ prompt_end() {
 	local symbol_color='green'
 	[[ $UID -eq 0 ]] && symbol_color='magenta'
 	[[ $RETVAL -ne 0 ]] && symbol_color='red'
-	prompt_segment $symbol_color "\n%(?..%? )→"
+	prompt_segment $symbol_color " %(?..%? )→"
 }
 
 build_lprompt() {
 	RETVAL=$?
-    prompt_prefix
-    prompt_mode
-    prompt_dir
-    prompt_virtualenv
-    prompt_git
+  prompt_mode
+  prompt_dir
+  prompt_virtualenv
+  prompt_git
 	prompt_end
 }
 
