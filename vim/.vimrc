@@ -23,6 +23,9 @@ call vundle#begin()
 " Vundle plugin
 Plugin 'VundleVim/Vundle.vim'
 
+" Startify
+Plugin 'mhinz/vim-startify'
+
 " Gruvbox color scheme
 Plugin 'morhetz/gruvbox'
 
@@ -191,6 +194,17 @@ colorscheme gruvbox
 " }}}
 " Plugins {{{
 
+" Startify
+let g:startify_session_dir = '~/.vim/sessions'
+let g:startify_list_order = [
+      \ ['    Bookmarks'], 'bookmarks',
+      \ ['    Sessions'], 'sessions',
+      \ ['    Recently used in directory'], 'dir',
+      \ ['    Recently used'], 'files'
+      \ ]
+let g:startify_session_autoload = 1
+let g:startify_session_delete_buffers = 1
+
 " CtrlP
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
@@ -241,9 +255,9 @@ if 'VIRTUAL_ENV' in os.environ:
   project_base_dir = os.environ['VIRTUAL_ENV']
   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
   execfile(activate_this, dict(__file__=activate_this))
-EOF
+  EOF
 
-" }}}
+  " }}}
 " Functions {{{
 
 " Toggle line numbers mode (relative / absolute)
@@ -274,8 +288,8 @@ nnoremap <C-l> <C-W>l
 
 " Resize buffers
 nnoremap <Left> :vertical resize -1<CR>
-nnoremap <Down> :horizontal resize -1<CR>
-nnoremap <Up> :horizontal resize +1<CR>
+nnoremap <Down> :resize -1<CR>
+nnoremap <Up> :resize +1<CR>
 nnoremap <Right> :vertical resize +1<CR>
 
 " Toggle folding
@@ -310,7 +324,7 @@ nnoremap <leader>h :nohlsearch<CR>
 nnoremap <leader>n :call NumberToggle()<CR>
 
 " Save session
-nnoremap <leader>s :mksession
+nnoremap <leader>s :SSave<CR>
 
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
