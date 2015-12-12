@@ -10,7 +10,8 @@ set titlestring=''
 
 colorscheme sebpot
 
-noremap <C-q> :xall<CR>
+noremap <C-q> :quitall<CR>
+noremap <C-x> :xall<CR>
 noremap <C-t> :tabopen<CR>gh<CR>
 
 noremap j 4j
