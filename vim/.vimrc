@@ -287,10 +287,10 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 
 " Resize buffers
-nnoremap <Left> :vertical resize -1<CR>
-nnoremap <Down> :resize -1<CR>
-nnoremap <Up> :resize +1<CR>
-nnoremap <Right> :vertical resize +1<CR>
+nnoremap <silent> <Left> :vertical resize -1<CR>
+nnoremap <silent> <Down> :resize -1<CR>
+nnoremap <silent> <Up> :resize +1<CR>
+nnoremap <silent> <Right> :vertical resize +1<CR>
 
 " Toggle folding
 nnoremap <leader><space> za
@@ -318,16 +318,16 @@ vnoremap k :m '<-2<CR>gv=gv
 nnoremap <leader>f gg=G
 
 " Disable search highlighting
-nnoremap <leader>h :nohlsearch<CR>
+nnoremap <silent> <leader>h :nohlsearch<CR>
 
 " Toggle line numbers mode
-nnoremap <leader>n :call NumberToggle()<CR>
+nnoremap <silent> <leader>n :call NumberToggle()<CR>
 
 " Save session
 nnoremap <leader>s :SSave<CR>
 
 " Toggle NERDTree
-map <C-n> :NERDTreeToggle<CR>
+map <silent> <C-n> :NERDTreeToggle<CR>
 
 " }}}
 " File {{{
