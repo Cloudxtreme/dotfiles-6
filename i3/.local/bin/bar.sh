@@ -100,8 +100,8 @@ done > "$panel_fifo" &
 # Window title
 function window_title() {
   title="$(xtitle)"
-  if [ ${#title} -gt 120 ]; then
-    title="${title:0:120}..."
+  if [ ${#title} -gt 87 ]; then
+    title="${title:0:87}..."
   fi
   title="T%{F$fg2}$title%{F-}"
   echo $title
@@ -206,6 +206,10 @@ while true; do
     details=$(echo $mpd_s | head -n 2 | tail -n 1 | tr -s ' ')
     ttime=$(echo $details | cut -d ' ' -f 3)
     mode=$(echo $details | cut -d ' ' -f 1)
+
+    if [ ${#track} -gt 52 ]; then
+      track="${track:0:52}..."
+    fi
 
     case "$mode" in
       '[paused]')
