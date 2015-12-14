@@ -231,8 +231,6 @@ exec --no-startup-id feh --bg-fill $HOME/pictures/wallpaper.png
 exec --no-startup-id xautolock -time 10 -locker $HOME/.local/bin/lock.sh &
 exec --no-startup-id rescuetime &
 exec --no-startup-id $HOME/.local/bin/start-server.sh &
-exec --no-startup-id mpd
-exec --no-startup-id jupyter notebook &
 # }}}
 
 # vim:fdm=marker:foldlevel=0:ft=i3

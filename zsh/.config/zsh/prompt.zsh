@@ -23,6 +23,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 prefix_color='black'
 mode_color='white'
 venv_color='cyan'
+rvm_color='magenta'
 dir_color='yellow'
 timer_color='black'
 
@@ -101,6 +102,10 @@ prompt_virtualenv() {
   [[ -n $VIRTUAL_ENV ]] && prompt_segment $venv_color " `basename $VIRTUAL_ENV`"
 }
 
+prompt_rvm() {
+  [[ -n $GEM_HOME ]] && prompt_segment $rvm_color " `basename $GEM_HOME`"
+}
+
 prompt_dir() {
 	prompt_segment $dir_color '%~'
 }
@@ -140,6 +145,7 @@ build_lprompt() {
   prompt_mode
   prompt_dir
   prompt_virtualenv
+  prompt_rvm
   prompt_git
 	prompt_end
 }

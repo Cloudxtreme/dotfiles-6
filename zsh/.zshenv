@@ -17,10 +17,6 @@ export WORKON_HOME="$HOME/.virtualenvs"
 export PROJECT_HOME="$HOME/dev"
 source '/usr/bin/virtualenvwrapper.sh'
 
-# Ruby gems
-export GEM_HOME="$(ruby -e 'print Gem.user_dir')/bin"
-export PATH="$GEM_HOME:$PATH"
-
 # Java home
 export JAVA_HOME="/usr/lib/jvm/java-8-jdk"
 

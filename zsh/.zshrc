@@ -9,6 +9,9 @@
 # Stop if login shell
 [[ -o login && "$(tty)" == "tty1" ]] && return
 
+# RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
 # ZSH config directory
 ZSH_CONFIG="$HOME/.config/zsh"
 
@@ -32,3 +35,5 @@ source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 # vim:ft=zsh
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
