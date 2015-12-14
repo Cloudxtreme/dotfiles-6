@@ -104,6 +104,9 @@ set linebreak
 " Indent continuation line
 set breakindent
 
+" Copy previous indent on autoindenting
+set copyindent
+
 " Enable folding
 set foldenable
 
@@ -136,6 +139,9 @@ set updatetime=1000
 
 " Boost in terminal
 set ttyfast
+
+" Set terminal title
+set title
 
 " }}}
 " UI {{{
@@ -315,7 +321,8 @@ vnoremap j :m '>+1<CR>gv=gv
 vnoremap k :m '<-2<CR>gv=gv
 
 " Format code
-nnoremap <leader>f gg=G
+nnoremap <leader>f gqap
+vnoremap <leader>f gq
 
 " Disable search highlighting
 nnoremap <silent> <leader>h :nohlsearch<CR>
