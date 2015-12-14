@@ -62,9 +62,6 @@ Plugin 'Valloric/YouCompleteMe'
 " Syntax checking
 Plugin 'scrooloose/syntastic'
 
-" LaTeX
-Plugin 'lervag/vimtex'
-
 " SCSS file syntax
 Plugin 'cakebaker/scss-syntax.vim'
 
@@ -136,6 +133,9 @@ set autowriteall
 
 " Set update time
 set updatetime=1000
+
+" Boost in terminal
+set ttyfast
 
 " }}}
 " UI {{{
@@ -376,7 +376,8 @@ autocmd FileType xml
 
 " TeX files
 autocmd FileType tex
-      \ setlocal colorcolumn=
+      \ setlocal colorcolumn= |
+      \ setlocal lazyredraw
 
 " Close window when only NERDTree is present
 autocmd BufEnter *
