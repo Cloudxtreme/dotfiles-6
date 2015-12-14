@@ -66,8 +66,10 @@ alias tmux.a="tmux attach -t"
 alias tmux.l="tmux ls"
 alias tmux.k="tmux kill-session -t"
 alias tmux.ka="tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill"
-alias tmux.s="retmux -b"
-alias tmux.r="retmux -r"
+
+function tmux.s() {
+  $HOME/.tmux-sessions/$1.sh
+}
 
 # }}}
 # Mixed {{{
