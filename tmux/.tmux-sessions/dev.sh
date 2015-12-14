@@ -13,9 +13,9 @@ fi
 tmux has-session -t "$name"
 if [ $? -eq 1 ]; then
   tmux new-session -d -c "$wd" -n 'editor' -s "$name" 'vim'
-  tmux split-window -d -c "$wd" -l 5
-  tmux new-window -d -c "$wd" -n 'running'
-  tmux new-window -d -c "$wd" -n 'testing'
+  tmux split-window -d -c "$wd" -l 5 -t "$name":1
+  tmux new-window -d -c "$wd" -n 'running' -t "$name"
+  tmux new-window -d -c "$wd" -n 'testing' -t "$name"
 fi
 
 tmux attach-session -t "$name"
