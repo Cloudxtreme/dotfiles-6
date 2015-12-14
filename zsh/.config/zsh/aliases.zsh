@@ -65,10 +65,11 @@ alias tmux.n="tmux new -s"
 alias tmux.a="tmux attach -t"
 alias tmux.l="tmux ls"
 alias tmux.k="tmux kill-session -t"
-alias tmux.ka="tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill"
 
 function tmux.s() {
-  $HOME/.tmux-sessions/$1.sh
+  name=$1
+  shift
+  $HOME/.tmux-sessions/$name.sh "$@"
 }
 
 # }}}
