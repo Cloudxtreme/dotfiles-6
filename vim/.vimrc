@@ -35,6 +35,9 @@ Plugin 'bling/vim-airline'
 " NERDTree
 Plugin 'scrooloose/nerdtree'
 
+" Tagbar
+Plugin 'majutsushi/tagbar'
+
 " The Silver Searcher
 Plugin 'rking/ag.vim'
 
@@ -59,8 +62,17 @@ Plugin 'tpope/vim-surround'
 " Completion
 Plugin 'Valloric/YouCompleteMe'
 
+" NERD Commenter
+Plugin 'scrooloose/nerdcommenter'
+
 " Syntax checking
 Plugin 'scrooloose/syntastic'
+
+" Ruby file syntax and tools
+Plugin 'vim-ruby/vim-ruby'
+
+" Add END keyword automatically in ruby
+Plugin 'tpope/vim-endwise'
 
 " SCSS file syntax
 Plugin 'cakebaker/scss-syntax.vim'
@@ -244,6 +256,10 @@ let NERDTreeIgnore = [
       \ '\.sublime-project$', '\.sublime-workspace$', '\.tmp$', '\.toc$'
       \ ]
 
+" Tagbar
+let g:tagbar_autofocus = 1
+let g:tagbar_compact = 1
+
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion = 1
 
@@ -335,6 +351,9 @@ nnoremap <leader>s :SSave<CR>
 
 " Toggle NERDTree
 map <silent> <C-n> :NERDTreeToggle<CR>
+
+" Toggle Tagbar
+map <silent> <F8> :TagbarToggle<CR>
 
 " }}}
 " File {{{
