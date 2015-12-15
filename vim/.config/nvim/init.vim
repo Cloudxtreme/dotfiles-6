@@ -1,1 +1,1 @@
-.vimrc
+/home/sebpot/.vimrc
