@@ -4,28 +4,29 @@
 " Author: Sebastian Potasiak <sebpot@protonmail.com>
 " Date:   2015-12-15
 " File:   ~/.config/nvim/init.vim
-" 
+"
 " Plug {{{
 call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
 Plug 'kien/ctrlp.vim'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
+Plug 'nvie/vim-flake8'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
-Plug 'Shougo/deoplete.nvim'
 Plug 'tpope/vim-endwise', { 'for': 'ruby' }
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-rvm', { 'for': 'ruby' }
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'Valloric/YouCompleteMe', { 'do': 'python2 install.py --clang-completer' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 call plug#end()
 " }}}
@@ -43,6 +44,7 @@ set foldnestmax=10
 set modeline
 set history=1000
 set ignorecase
+set mouse=
 " }}}
 " UI {{{
 set number
@@ -104,6 +106,14 @@ let g:startify_session_autoload = 1
 let g:startify_session_delete_buffers = 1
 " }}}
 " Syntastic {{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_warning_symbol = '∆'
@@ -119,6 +129,9 @@ if 'VIRTUAL_ENV' in os.environ:
   execfile(activate_this, dict(__file__=activate_this))
 EOF
 " }}}
+" YouCompleteMe {{{
+let g:ycm_autoclose_preview_window_after_completion = 1
+" }}}
 " Functions {{{
 function! NumberToggle()    " Toggle relative / no relative line numbers
   if (&relativenumber == 1)
@@ -131,6 +144,7 @@ endfunction
 " Input {{{
 let mapleader=' '
 nnoremap <space> <nop>
+inoremap kk <Esc>
 nnoremap <C-i> :bn<CR>
 nnoremap <C-o> :bp<CR>
 nnoremap <C-h> <C-W>h
@@ -155,6 +169,7 @@ vnoremap j :m '>+1<CR>gv=gv
 vnoremap k :m '<-2<CR>gv=gv
 nnoremap <leader>f gqap
 vnoremap <leader>f gq
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <silent> <leader>h :nohlsearch<CR>
 nnoremap <silent> <leader>n :call NumberToggle()<CR>
 nnoremap <leader>s :SSave<CR>
@@ -171,23 +186,28 @@ autocmd FileType css
 autocmd FileType html,markdown
       \ setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript
-      \ setlocal omnifunc=javascriptcomplete#CompleteJS
+      \ setlocal omnifunc=javascriptcomplete#CompleteJS |
+      \ setlocal colorcolumn=81
 autocmd FileType python
-      \ set omnifunc=pythoncomplete#Complete |
+      \ setlocal omnifunc=pythoncomplete#Complete |
       \ setlocal tabstop=4 |
       \ setlocal softtabstop=4 |
       \ setlocal shiftwidth=4 |
       \ setlocal commentstring=#\ %s |
       \ setlocal colorcolumn=80 |
       \ let python_highlight_all=1
-autocmd FileType xml
-      \ setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType tex
       \ setlocal colorcolumn= |
       \ setlocal lazyredraw
+autocmd FileType vim
+      \ setlocal colorcolumn=81
+autocmd FileType xml
+      \ setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd BufEnter *
       \ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) |
       \ q |
       \ endif
+autocmd BufWritePre *
+      \ :%s/\s\+$//e
 " }}}
 " vim:foldmethod=marker:foldlevel=0
