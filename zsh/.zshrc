@@ -28,7 +28,7 @@ source "$ZSH_CONFIG/completion.zsh"
 source "$ZSH_CONFIG/bindings.zsh"
 source "$ZSH_CONFIG/aliases.zsh"
 source "$ZSH_CONFIG/prompt.zsh"
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 source "/usr/share/doc/pkgfile/command-not-found.zsh"
 source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
