@@ -233,7 +233,8 @@ Requirements:
 
   - vim
   - screenfetch
-  - mpd
+  - ranger
+  - ncmpcpp
 
 ![](https://raw.githubusercontent.com/sebpot/dotfiles/master/previews/preview-02.png)
 
