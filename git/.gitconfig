@@ -90,7 +90,7 @@
   g = "!git --no-pager grep --color --ignore-case -n"
 
   # Log
-  l = log
+  l = log --graph --abbrev-commit --pretty=oneline
   ls = log --stat
   lp = log -p
   lg = log --graph
