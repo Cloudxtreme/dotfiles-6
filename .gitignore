@@ -13,9 +13,9 @@ vim/.vim/backup/*
 vim/.vim/bundle/*
 !vim/.vim/bundle/Vundle.vim
 
-nvim/.config/nvim/backup/*
-nvim/.config/nvim/autoload/*
-!nvim/.config/nvim/autoload/plug.vim
+neovim/.config/nvim/backup/*
+neovim/.config/nvim/autoload/*
+!neovim/.config/nvim/autoload/plug.vim
 
 weechat/.weechat/*
 !weechat/.weechat/*.conf
