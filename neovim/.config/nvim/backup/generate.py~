@@ -1,0 +1,53 @@
+from moviepy.editor import *
+import numpy as np
+from PIL import Image, ImageDraw
+from progressbar import ProgressBar, Percentage, Bar, ETA
+import sys
+
+class MovieColor:
+    pb_widgets = [
+        Percentage(), Bar(), ETA()
+    ]
+    def get_average_frames_colors(self, file_path):
+        clip = VideoFileClip(file_path)
+        print('Processing frames...')
+        colors = []
+        n_frames = int(clip.duration * clip.fps)
+        with ProgressBar(max_value=n_frames, widgets=self.pb_widgets) as bar:
+            i = 0
+            for frame in clip.iter_frames():
+                color = self.extract_color(frame)
+                colors.append(color)
+                bar.update(i)
+                i += 1
+        return colors
+
+    def draw_bars(self, colors):
+        n_col=len(colors)
+        print('Drawing bars...')
+        with ProgressBar(max_value=n_col, widgets=self.pb_widgets) as bar:
+            draw = ImageDraw.Draw(im)
+            for i, color in enumerate(colors):
+                draw.line([(i, 0), (i, h)], fill=color)
+                bar.update(i)
+            del draw
+
+    def create_image(self, name, colors, size=(960, 540)):
+        w, h = size
+        im = Image.new('RGB', (len(colors), h))
+        self.draw_bars(colors)
+        im = im.resize(size, Image.ANTIALIAS)
+        im.save('{}.png'.format(name))
+
+    def extract_color(self, frame):
+        average = np.average(np.average(np.array(frame), axis=0), axis=0)
+        return tuple(average.astype(int))
+
+    def generate(self, file_path, name, size=(960, 540)):
+        colors = self.get_average_frames_colors(file_path)
+        self.create_image(name, colors, size)
+
+
+mc = MovieColor()
+mc.generate('test.mp4', 'limitless')
+

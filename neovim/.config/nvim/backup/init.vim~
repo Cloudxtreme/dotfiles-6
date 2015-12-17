@@ -654,6 +654,9 @@ nnoremap Y y$
 " Replay @q macro
 nnoremap Q @q
 
+" Find tasks and fixes
+nnoremap <leader>t :Ag \(FIXME\)\\|\(TODO\)<CR>
+
 " Disable search results highlighting
 nnoremap <silent> <leader>h :nohlsearch<CR>
 
