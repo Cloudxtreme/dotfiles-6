@@ -8,6 +8,8 @@
 
 set titlestring=''
 
+set! javascript.options.jit.chrome=true
+
 colorscheme sebpot
 
 noremap <C-q> :quitall<CR>
