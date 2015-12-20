@@ -220,7 +220,8 @@ call plug#end()
 set shell=/bin/zsh      " Set shell to Z Shell
 set number              " Line numbers on
 set cursorline          " Highlight current line
-set textwidth=80        " Text width to 80 characters
+set textwidth=0         " Text width to unlimited characters
+set wrapmargin=0        " No wrap margin
 set cmdheight=1         " Command line height
 set pumheight=10        " Completion window max height
 set modeline            " Use modelines
@@ -249,7 +250,8 @@ set expandtab         " Use spaces instead of tabs
 " ------------------------------------------------------------------------------
 " {{{
 
-set linebreak         " Break lines visually when text exceeds window width
+set wrap              " Wrap words visually
+set linebreak         " Break only on certain characters
 set breakindent       " Indent line continuations to same level as original
 
 " }}}
@@ -318,13 +320,13 @@ endif
 " {{{
 
 " Show whitespace characters
-set list
+" set list
 
 " Whitespace characters representations
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:·,nbsp:·
+" set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:·,nbsp:·
 
 " Show character on line break
-set showbreak=↪
+set showbreak="↪ "
 
 " }}}
 
@@ -678,10 +680,10 @@ nnoremap <C-o> :bp<CR>
 " ------------------------------------------------------------------------------
 " {{{
 
-nnoremap <C-h> <C-W>h
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-l> <C-W>l
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
 
 " }}}
 
@@ -841,7 +843,8 @@ autocmd FileType python
       \ let python_highlight_all=1
 
 autocmd FileType tex
-      \ setlocal colorcolumn= |
+      \ setlocal colorcolumn=121 |
+      \ setlocal textwidth=120
 
 autocmd FileType vim
       \ setlocal colorcolumn=81

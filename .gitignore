@@ -9,10 +9,6 @@ mpd/.config/mpd/sticker.sql
 ncmpcpp/.ncmpcpp/error.log
 ncmpcpp/.ncmpcpp/patterns.list
 
-vim/.vim/backup/*
-vim/.vim/bundle/*
-!vim/.vim/bundle/Vundle.vim
-
 neovim/.config/nvim/backup/*
 neovim/.config/nvim/autoload/*
 !neovim/.config/nvim/autoload/plug.vim
