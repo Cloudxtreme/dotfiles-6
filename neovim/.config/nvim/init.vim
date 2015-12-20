@@ -680,10 +680,11 @@ nnoremap <C-o> :bp<CR>
 " ------------------------------------------------------------------------------
 " {{{
 
-nnoremap <C-H> <C-W><C-H>
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
+nmap <BS>  <C-w>h " Fixes bug with C-h in certain terminals
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
 
 " }}}
 
