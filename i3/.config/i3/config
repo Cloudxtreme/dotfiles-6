@@ -28,7 +28,7 @@ set $ws7 " 7 "
 set $ws8 " 8 "
 
 # Gaps
-set $gaps_inner 24
+set $gaps_inner  24
 set $gaps_outer  0
 
 # }}}
@@ -42,13 +42,13 @@ gaps inner $gaps_inner
 gaps outer $gaps_outer
 
 # Window border width
-new_window pixel 4
+new_window pixel 1
 
 # Colors
 #                       BORDER      BACKGROUND  TEXT       INDICATOR
-client.focused          "#d5c4a1"   "#d5c4a1"   "#edbdd2"  "#d5c4a1"
+client.focused          "#504945"   "#504945"   "#edbdd2"  "#504945"
 client.unfocused        "#282828"   "#282828"   "#ebdbb2"  "#282828"
-client.focused_inactive "#665c54"   "#665c54"   "#ebdbb2"  "#665c54"
+client.focused_inactive "#282828"   "#282828"   "#ebdbb2"  "#282828"
 client.urgent           "#cc241d"   "#cc241d"   "#ebdbb2"  "#cc241d"
 
 # }}}
@@ -63,15 +63,15 @@ bar {
   separator_symbol " / "
 
   colors {
-    background #282828
+    background #1d2021
     statusline #d5c4a1
     separator  #665c54
 
-    focused_workspace  #282828 #282828 #ebdbb2
-    active_workspace   #282828 #282828 #d5c4a1
-    inactive_workspace #282828 #282828 #665c54
-    urgent_workspace   #282828 #282828 #fb4934
-    binding_mode       #282828 #282828 #fabd2f
+    focused_workspace  #1d2021 #1d2021 #ebdbb2
+    active_workspace   #1d2021 #1d2021 #d5c4a1
+    inactive_workspace #1d2021 #1d2021 #665c54
+    urgent_workspace   #1d2021 #1d2021 #fb4934
+    binding_mode       #1d2021 #1d2021 #fabd2f
   }
 }
 
@@ -251,9 +251,10 @@ exec --no-startup-id dunst &
 exec --no-startup-id redshift &
 exec --no-startup-id nm-applet &
 #exec --no-startup-id $HOME/.local/bin/bar.sh &
-exec --no-startup-id feh --bg-fill $HOME/pictures/wallpaper.png
+#exec --no-startup-id feh --bg-fill $HOME/pictures/wallpaper.png
+exec --no-startup-id xsetroot -solid "#1d2021"
 exec --no-startup-id xautolock -time 10 -locker $HOME/.local/bin/lock.sh &
-exec --no-startup-id rescuetime &
+#exec --no-startup-id rescuetime &
 exec --no-startup-id $HOME/.local/bin/start-server.sh &
 # }}}
 

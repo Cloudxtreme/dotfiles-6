@@ -34,6 +34,7 @@ source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
 # vim:ft=zsh
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
