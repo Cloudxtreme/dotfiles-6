@@ -52,6 +52,30 @@ client.focused_inactive "#665c54"   "#665c54"   "#ebdbb2"  "#665c54"
 client.urgent           "#cc241d"   "#cc241d"   "#ebdbb2"  "#cc241d"
 
 # }}}
+# Bar {{{
+
+bar {
+  status_command python $HOME/.config/i3status/status.py
+  position top
+  height 24
+  tray_output eDP1
+
+  separator_symbol " / "
+
+  colors {
+    background #282828
+    statusline #d5c4a1
+    separator  #665c54
+
+    focused_workspace  #282828 #282828 #ebdbb2
+    active_workspace   #282828 #282828 #d5c4a1
+    inactive_workspace #282828 #282828 #665c54
+    urgent_workspace   #282828 #282828 #fb4934
+    binding_mode       #282828 #282828 #fabd2f
+  }
+}
+
+# }}}
 # Workspaces {{{
 
 # Workspace auto back and forth
@@ -226,7 +250,7 @@ exec --no-startup-id unclutter -b
 exec --no-startup-id dunst &
 exec --no-startup-id redshift &
 exec --no-startup-id nm-applet &
-exec --no-startup-id $HOME/.local/bin/bar.sh &
+#exec --no-startup-id $HOME/.local/bin/bar.sh &
 exec --no-startup-id feh --bg-fill $HOME/pictures/wallpaper.png
 exec --no-startup-id xautolock -time 10 -locker $HOME/.local/bin/lock.sh &
 exec --no-startup-id rescuetime &

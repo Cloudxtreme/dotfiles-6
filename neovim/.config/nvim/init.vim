@@ -641,9 +641,6 @@ endfunction
 let mapleader="\<space>"
 nnoremap <space> <nop>
 
-" Handy escape from insert mode
-inoremap kk <Esc>
-
 " Toggle folding
 nnoremap <leader><space> za
 

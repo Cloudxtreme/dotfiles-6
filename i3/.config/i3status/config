@@ -1,0 +1,49 @@
+general {
+  colors = true
+  color_good = "#b8bb26"
+  color_bad = "#fb4934"
+  color_degraded = "#665c54"
+  interval = 1
+}
+
+order += "volume master"
+order += "load"
+order += "ethernet enp1s0"
+order += "wireless wlp2s0"
+order += "battery 0"
+order += "tztime local"
+
+volume master {
+  format = "%volume "
+  device = "default"
+  mixer = "Master"
+}
+
+load {
+  format = "%1min %5min %15min "
+}
+
+ethernet enp1s0 {
+  format_up = "wired "
+  format_down = ""
+}
+
+wireless wlp2s0 {
+  format_up = "%essid %quality "
+  format_down = ""
+}
+
+battery 0 {
+  format = "%status%percentage (%remaining) "
+  low_threshold = 15
+  threshold_type = "percentage"
+  integer_battery_capacity = true
+  hide_seconds = true
+  status_chr = ""
+  status_bat = ""
+  status_full = ""
+  }
+
+tztime local {
+  format = " %a, %d %b  %H:%M "
+}
